@@ -1,6 +1,6 @@
 module ZoomScript
 
-using Redis, Images
+using Images, ImageView
     
 include("ReadImage.jl")
 include("PauliLocal.jl")    		# A false coloring function
@@ -35,8 +35,8 @@ function view(hh::AbstractString, hv::AbstractString, vv::AbstractString,zoomPer
 	# zoomWidth=300
 
     start		            = 0
-    sourceHeight      		= 153546
-    sourceWidth	    		= 9580
+    sourceHeight      		= 11858
+    sourceWidth	    		= 1650
     windowHeight          	= round(Int,sourceHeight*(windowPercent/100))
     windowWidth	        	= round(Int,sourceWidth*(windowPercent/100))
     zoomHeight 	        	= round(Int,sourceHeight*(zoomPercent/100))
@@ -68,6 +68,7 @@ function view(hh::AbstractString, hv::AbstractString, vv::AbstractString,zoomPer
 	########## Step 3
 	tic()
     saveimg_time = Images.save(imgname,convert(Image,pauliRGBeq))
+    #ImageView.view(pauliRGBeq)  
 	time[3] = toc()
 
     # Add of noise and visualization
